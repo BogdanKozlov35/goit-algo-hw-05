@@ -42,8 +42,8 @@ def filter_logs_by_level(logs: list, level: str):
 
 def main():
 
-    user_input = input("Enter path log file [example log.txt or log.txt and /ERROR or DEBUG or WARNING or INFO/] :")
-    path = Path(sys.argv[1]) #"log.txt"
+    #user_input = input("Enter path log file [example log.txt or log.txt and /ERROR or DEBUG or WARNING or INFO/] :")
+    path = sys.argv[1] #"log.txt"
     logs = load_logs(path)
     counts = count_logs_by_level(logs)
     print(display_log_counts(counts))
