@@ -1,7 +1,7 @@
 import re
 
 def generator_numbers(text: str):  # пошук сумм в тексті
-    yield from re.findall(r"\d+\.\d{1,2}", text)
+    yield from re.findall(r"\s\d+\.\d{1,2}\s", text)
 def sum_profit(text: str, func: generator_numbers): # обчислення загального доходу після пошуку всіх сум
     numbers = func(text) #  результат пошуку
 

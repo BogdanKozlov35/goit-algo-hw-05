@@ -3,9 +3,6 @@ from pathlib import Path
 from collections import defaultdict
 import sys
 
-#filter_logs_by_level(logs: list, level: str) -> list
-
-
 def parse_log_line(line: str) -> dict:
     pattern = r'^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2}) (\w+) (.+)$'
     match = re.match(pattern, line)
@@ -45,14 +42,14 @@ def filter_logs_by_level(logs: list, level: str):
 
 def main():
 
-    #user_input = input("Enter path log file [example log.txt or log.txt ERROR] :")
-    path = "log.txt" #sys.argv[1]
+    user_input = input("Enter path log file [example log.txt or log.txt and /ERROR or DEBUG or WARNING or INFO/] :")
+    path = Path(sys.argv[1]) #"log.txt"
     logs = load_logs(path)
     counts = count_logs_by_level(logs)
     print(display_log_counts(counts))
 
     if len(sys.argv) > 0:
-        level = "ERROR" #sys.argv[2]
+        level = sys.argv[2] #ERROR or DEBUG or WARNING or INFO
         filtered_logs = filter_logs_by_level(logs, level)
         print("Filtered Logs for level:", level)
         for log in filtered_logs:
