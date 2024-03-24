@@ -1,10 +1,9 @@
 import re
 
 def generator_numbers(text: str):  # пошук сумм в тексті
-    yield from re.findall(r"\s\d+\.\d{1,2}\s", text)
+    yield from re.findall(r" \d+\.\d+ ", text) #r" \d+\.\d{1,2} "
 def sum_profit(text: str, func: generator_numbers): # обчислення загального доходу після пошуку всіх сум
     numbers = func(text) #  результат пошуку
-
     total = sum(float(num) for num in numbers)
     return total
 
@@ -15,7 +14,6 @@ def main ():
     )
     total_income = sum_profit(text, generator_numbers)
     print(f"Загальний дохід: {total_income}")
-
 
 if __name__ == "__main__":
      main()
